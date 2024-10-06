@@ -11,12 +11,12 @@ function love.load()
     sprite = love.graphics.newImage("LUG.png")
     
     -- Get the width and height of the sprite
-    spriteWidth = sprite:getWidth()
-    spriteHeight = sprite:getHeight()
+    spriteWidth = sprite:getWidth()*0.4
+    spriteHeight = sprite:getHeight()*0.4
 
      -- Calculate the position to center the sprite
-     spriteX = (windowWidth / 2) - (spriteWidth / 2)
-     spriteY = (windowHeight / 2) - (spriteHeight / 2)
+    spriteX = (windowWidth / 2) - (spriteWidth / 2)
+    spriteY = (windowHeight / 2) - (spriteHeight / 2)
 end
 
 -- Runs every frame (for logic)
@@ -27,7 +27,7 @@ end
 -- Runs every frame (draws to the screen)
 function love.draw()
     -- Draw the sprite at its position
-    love.graphics.draw(sprite, spriteX, spriteY)
+    love.graphics.draw(sprite, spriteX, spriteY, 0, 0.4)
     
     -- Display the click counter
     love.graphics.print("Clicks: " .. clickCounter, 10, 10)
