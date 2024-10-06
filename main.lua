@@ -1,17 +1,34 @@
+-- Define global variables for the sprite
+local sprite = nil   -- Placeholder for the sprite image
+local spriteX, spriteY = 0, 0  -- Initial position of the sprite
+local spriteWidth, spriteHeight = 0, 0  -- Placeholder for sprite dimensions
+local clickCounter = 0  -- Global counter for clicks
 
-
---runs once at the start of the game (for setup)
+-- Runs once at the start of the game (for setup)
 function love.load()
+    local windowWidth, windowHeight = love.graphics.getDimensions()
+    -- Load the sprite image
+    sprite = love.graphics.newImage("LUG.png")
+    
+    -- Get the width and height of the sprite
+    spriteWidth = sprite:getWidth()
+    spriteHeight = sprite:getHeight()
 
-
+     -- Calculate the position to center the sprite
+     spriteX = (windowWidth / 2) - (spriteWidth / 2)
+     spriteY = (windowHeight / 2) - (spriteHeight / 2)
 end
 
---runs every frame (for logic)
+-- Runs every frame (for logic)
 function love.update(dt)
-
+    -- No update logic needed for now
 end
 
---runs every frame (draws to screen) 
+-- Runs every frame (draws to the screen)
 function love.draw()
-
+    -- Draw the sprite at its position
+    love.graphics.draw(sprite, spriteX, spriteY)
+    
+    -- Display the click counter
+    love.graphics.print("Clicks: " .. clickCounter, 10, 10)
 end
