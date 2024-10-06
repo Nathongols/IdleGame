@@ -8,7 +8,7 @@ local clickCounter = 0  -- Global counter for clicks
 function love.load()
     local windowWidth, windowHeight = love.graphics.getDimensions()
     -- Load the sprite image
-    sprite = love.graphics.newImage("LUG.png")
+    sprite = love.graphics.newImage("Luggy.png")
     
     -- Get the width and height of the sprite
     spriteWidth = sprite:getWidth()*0.4
@@ -31,4 +31,16 @@ function love.draw()
     
     -- Display the click counter
     love.graphics.print("Clicks: " .. clickCounter, 10, 10)
+end
+
+-- Check for mouse click events
+function love.mousepressed(x, y, button, istouch, presses)
+    if button == 1 then -- Left mouse button
+        -- Check if the click was inside the sprite's bounding box
+        if x >= spriteX and x <= spriteX + spriteWidth and
+           y >= spriteY and y <= spriteY + spriteHeight then
+            -- Increment the click counter if the sprite was clicked
+            clickCounter = clickCounter + 1
+        end
+    end
 end
